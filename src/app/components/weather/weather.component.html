@@ -1,10 +1,9 @@
-<div  class="container animated fadeIn">
+<div class="container animated fadeIn">
   <!-- 1 -->
-  <div *ngIf="loading === false"  align="center"class=" animated fadeIn">
+  <div *ngIf="loading === false" align="center" class=" animated fadeIn">
     <h2>Loading...</h2>
-  <div class="loader loader--style1" title="0" align="center">
-    <svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-     width="40px" height="40px" viewBox="0 0 40 40" enable-background="new 0 0 40 40" xml:space="preserve">
+    <div class="loader loader--style1" title="0" align="center">
+      <svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="40px" height="40px" viewBox="0 0 40 40" enable-background="new 0 0 40 40" xml:space="preserve">
     <path opacity="0.2" fill="#000" d="M20.201,5.169c-8.254,0-14.946,6.692-14.946,14.946c0,8.255,6.692,14.946,14.946,14.946
       s14.946-6.691,14.946-14.946C35.146,11.861,28.455,5.169,20.201,5.169z M20.201,31.749c-6.425,0-11.634-5.208-11.634-11.634
       c0-6.425,5.209-11.634,11.634-11.634c6.425,0,11.633,5.209,11.633,11.634C31.834,26.541,26.626,31.749,20.201,31.749z"/>
@@ -19,33 +18,89 @@
         repeatCount="indefinite"/>
       </path>
     </svg>
-  </div>
-  <p>Wait Please...</p>
+    </div>
+    <p>Wait Please...</p>
   </div>
 
 
   <div *ngIf="loading === true" class="info animated fadeIn">
+    <div class="current-weather">
 
-    <h1><strong> City:</strong>{{weather.city.name}}</h1>
+      <div class="row">
+        <div class="col-sm-12">
+          <h1>{{weather.city.name}}</h1>
+          <p>{{date | date: 'EEEE, MMMM d, H:mm'}}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <h3>{{weather.list[0].main.temp}}º</h3>
+          <p>+20 feels</p>
+        </div>
+        <div class="col-sm-4">
+          <i class="owf owf-{{weather.list[0].weather[0].id}}-{{weather.list[0].sys.pod}} owf-5x" style="color:white"></i>
+        </div>
+        <div class="col-sm-4">
+          <p>{{weather.list[0].main.pressure}} mm Hg</p>
+          <p>{{weather.list[0].main.humidity}}% humidity</p>
+          <p>{{weather.list[0].wind.speed}}m/s NV</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <h1>{{weather.list[0].weather[0].description}}</h1>
+        </div>
+      </div>
 
-    <i class="owf owf-800-n owf-5x"></i>
-    <i class="owf owf-{{weather.list[0].weather[0].id}}-d owf-5x" style="color:grey"></i>
-    <h2>{{date | date: 'EEEE, MMMM d, h:mm'}}</h2>
-    <h3>longitude:{{weather.city.coord.lon}}</h3>
-    <h3>longitude:{{weather.city.coord.lat}}</h3>
-    <!-- <img src="http://openweathermap.org/img/w/{{weather.list[0].weather[0].icon}}.png" alt=""> -->
-    <i class="owf owf-{{weather.list[0].weather[0].id}} owf-5x" style="color:grey"></i>
-    <h3><strong>Temp</strong>:{{weather.list[0].main.temp}}</h3>
-    <h3><strong>tempMax:</strong>{{weather.list[0].main.temp_max}}  </h3>
-    <h3><strong>tempMin: </strong>{{weather.list[0].main.temp_min}}</h3>
-    <h3> <strong>The weather description:</strong> {{weather.list[0].weather[0].description}}</h3>
-    <h3> <strong>humidity :</strong>{{weather.list[0].main.humidity}}</h3>
+    </div>
+    <div class="forecast">
+      <div class="row">
+        <div class="col-sm-2 days">
+          <h5>{{forecast[0].dt_txt | date: 'EEEE'}}</h5>
+          <i class="owf owf-{{forecast[0].weather[0].id}}-{{forecast[0].sys.pod}} owf-5x" style="color:white"></i>
+          <h3>{{forecast[0].main.temp}}º</h3>
+        </div>
+        <div class="col-sm-2 days">
+          <h5>{{forecast[7].dt_txt | date: 'EEEE'}}</h5>
+          <i class="owf owf-{{forecast[7].weather[0].id}}-{{forecast[7].sys.pod}} owf-5x" style="color:white"></i>
+          <h3>{{forecast[7].main.temp}}º</h3>
+        </div>
+        <div class="col-sm-2 days">
+          <h5>{{forecast[14].dt_txt | date: 'EEEE'}}</h5>
+          <i class="owf owf-{{forecast[14].weather[0].id}}-{{forecast[14].sys.pod}} owf-5x" style="color:white"></i>
+          <h3>{{forecast[14].main.temp}}º</h3>
+        </div>
+        <div class="col-sm-2 days">
+          <h5>{{forecast[22].dt_txt | date: 'EEEE'}}</h5>
+          <i class="owf owf-{{forecast[22].weather[0].id}}-{{forecast[22].sys.pod}} owf-5x" style="color:white"></i>
+          <h3>{{forecast[22].main.temp}}º</h3>
+        </div>
+        <div class="col-sm-2 days">
+          <h5>{{forecast[30].dt_txt | date: 'EEEE'}}</h5>
+          <i class="owf owf-{{forecast[0].weather[0].id}}-{{forecast[30].sys.pod}} owf-5x" style="color:white"></i>
+          <h3>{{forecast[30].main.temp}}º</h3>
+        </div>
+        <div class="col-sm-2 days">
+          <h5>{{forecast[39].dt_txt | date: 'EEEE'}}</h5>
+          <i class="owf owf-{{forecast[39].weather[0].id}}-{{forecast[39].sys.pod}} owf-5x" style="color:white"></i>
+          <h3>{{forecast[39].main.temp}}º</h3>
+        </div>
+      </div>
+
+    </div>
+
+<div class="row">
+  <div class="col-sm-12 search">
+    <form (ngSubmit)="onSubmit(form)" #form="ngForm">
+      <input type="text" ngModel name="city" placeholder="search city...">
+    </form>
 
   </div>
 
-  <form (ngSubmit)="onSubmit(form)" #form="ngForm">
-    <input type="text" ngModel name="city" placeholder="name of city">
-    <button  name="button">Go</button>
-  </form>
+</div>
+
 
   </div>
+
+
+</div>

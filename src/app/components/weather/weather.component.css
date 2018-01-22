@@ -1,0 +1,35 @@
+.container {
+  margin: auto;
+  width: 80%;
+  height: 60%;
+  background-color: #211d44;
+  color: white;
+  padding: 60px 15px 30px 15px;
+  text-align: center;
+}
+
+html, h1, h2 {
+  margin: 0;
+  padding: 0;
+}
+
+.current-weather {
+  background-image: url('https://etcdn.net/thumbnails/33509/it-dubai-a-spasso-per-la-citta-simbolo-degli-emirati-4ff25.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.days {
+  background-color: blue;
+  box-sizing: border-box;
+}
+
+.search {
+  background-color: yellow;
+  text-align: center;
+  width: 100%;
+}
+
+.row {
+  margin: 0;
+}

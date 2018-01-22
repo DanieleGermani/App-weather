@@ -28,6 +28,8 @@ export class WeatherComponent implements OnInit {
           this.loading = true;
           console.log(data)
            this.weather = data;
+           this.forecast = this.weather.list;
+           console.log(this.forecast)
 
         })
     })
