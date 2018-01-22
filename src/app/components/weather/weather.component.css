@@ -14,9 +14,15 @@ html, h1, h2 {
 }
 
 .current-weather {
-  background-image: url('https://etcdn.net/thumbnails/33509/it-dubai-a-spasso-per-la-citta-simbolo-degli-emirati-4ff25.jpg');
-  background-repeat: no-repeat;
-  background-position: center;
+  background-image: url('https://www.lifegate.it/app/uploads/francoforte-citta-sostenibili.jpg');
+  background-repeat:no-repeat;
+  background-size:100%;
+  background-position:center;
+
+}
+.current-weather>i{
+  color:white;
+  width: 400px;
 }
 
 .days {

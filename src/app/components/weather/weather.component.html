@@ -24,7 +24,7 @@
 
 
   <div *ngIf="loading === true" class="info animated fadeIn">
-    <div class="current-weather">
+    <div class="current-weather ">
 
       <div class="row">
         <div class="col-sm-12">
@@ -38,7 +38,7 @@
           <p>+20 feels</p>
         </div>
         <div class="col-sm-4">
-          <i class="owf owf-{{weather.list[0].weather[0].id}}-{{weather.list[0].sys.pod}} owf-5x" style="color:white"></i>
+          <i class="owf owf-{{weather.list[0].weather[0].id}}-{{weather.list[0].sys.pod}}" style="color:white; font-size:150px;"></i>
         </div>
         <div class="col-sm-4">
           <p>{{weather.list[0].main.pressure}} mm Hg</p>
