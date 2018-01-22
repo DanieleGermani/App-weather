@@ -12,40 +12,36 @@ export class WeatherComponent implements OnInit {
   weather:any;
   forecast:any;
   loading:boolean = false;
+  location:any;
 
 
-  constructor(public _weatherService:WeatherService) { }
+  constructor(public _weatherService:WeatherService) {}
 
   ngOnInit() {
-  }
+      navigator.geolocation.getCurrentPosition((pos) =>{
+      this.location = pos.coords;
+      let lat = this.location.latitude;
+      let lon = this.location.longitude
+      console.log(this.location)
+      this._weatherService.localWeather(lat,lon).subscribe(
+        (data)=>{
+          this.loading = true;
+          console.log(data)
+           this.weather = data;
+
+        })
+    })
+    }
+
   onSubmit(weatherForm:NgForm){
   // this.items.splice(0, this.items.length);
   this._weatherService.getWeather(weatherForm.value.city).subscribe(
     (data) => {
       this.loading = true;
-
       this.weather=data;
       console.log(this.weather)
       this.forecast = this.weather.list;
       console.log(this.forecast)
-
-
- //      let array = this.weather.list;
- //      console.log(array)
- //
- // for(var i = 0; i <= array.length; i= i+8){
- //
- //   let item = [];
- //    item.push(
- //                    data.list[i].main.temp,
- //                    data.list[i].dt_txt,
- //                    data.list[i].weather[0].icon);
- //    this.items.push(item)
- //    console.log(item)
- // }
- // console.log(this.items)
- //      localStorage.setItem('location', JSON.stringify(location));
-
     }
   )
 
