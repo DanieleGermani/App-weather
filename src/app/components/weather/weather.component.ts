@@ -16,6 +16,7 @@ export class WeatherComponent implements OnInit {
   color: any = [];
   item: any;
   items: any = [];
+  codes: any = [];
 
   serviceWeather(data) {
     this.loading = true;
@@ -24,29 +25,50 @@ export class WeatherComponent implements OnInit {
     console.log(this.forecast[0].weather[0].id)
 
     for (let i = 0; i <= this.forecast.length - 1; i = i + 7) {
-      let code = this.forecast[i].weather[0].id;
       let item = [];
-      item.push(data.list[i].weather[0].id)
-      console.log(item)
+      let date = data.list[i].dt_txt;
+      let code = data.list[i].weather[0].id;
+      let temp = data.list[i].main.temp;
+      let color;
+
+      if (code == 800) {
+        color = '3px solid #fff600';
+        this.codes.push(code)
+      } if (code == 500) {
+        color = '3px solid #00d2ff';
+      } if (code == 600 || code == 601) {
+        color = '3px solid #d71d1d';
+      } if (code == 801 || code == 802 || code == 803) {
+        color = '3px solid #ffffff';
+      } if (code == 900) {
+        color = '3px solid #17202A';
+      } if (code == 300) {
+        color = '3px solid #43de37';
+      }
+
+
+
+      item.push(date, code, temp, color)
+      // console.log(item)
       this.items.push(item)
     }
-    for(let j = 0; j<= this.items.length -1; j++){
-      if(this.items[j] == 800 || this.items[j] == 801){
-        this.color.push('#fff600')
-        continue
-      }if(this.items[j] == 500){
-        this.color.push('#00d2ff')
-        continue
-      }if(this.items[j] == 600){
-        this.color.push('#d71d1d')
-        continue
-      }if(this.items[j] == 801){
-        this.color.push('#ffffff')
-        continue
-      }else{
-        this.color.push('#43de37')
-      }
-      }
+    // for(let j = 0; j<= this.codes.length -1; j++){
+    //   if(this.codes[j] ==  800){
+    //     this.color.push('3px solid #fff600')
+    //     continue
+    //   }if(this.codes[j] == 500 || this.codes[j] == 501 ){
+    //     this.color.push('3px solid #00d2ff')
+    //     continue
+    //   }if(this.codes[j] == 600 || this.codes[j] == 601){
+    //     this.color.push('3px solid #d71d1d')
+    //     continue
+    //   }if(this.codes[j] == 801){
+    //     this.color.push('3px solid #ffffff')
+    //     continue
+    //   }else{
+    //     this.color.push('3px solid #43de37')
+    //   }
+    //   }
     console.log(this.items)
     console.log(this.color)
   }
@@ -58,24 +80,25 @@ export class WeatherComponent implements OnInit {
       this.location = pos.coords;
       let lat = this.location.latitude;
       let lon = this.location.longitude
-      console.log(this.location)
+
       this._weatherService.localWeather(lat, lon).subscribe(
         (data) => {
           this.serviceWeather(data)
+          console.log(this.weather)
         })
-
     })
   }
 
   onSubmit(weatherForm: NgForm) {
     // this.color.splice(0, this.color.length);
     // this.items.splice(0, this.items.length);
-    this.items = [];
+    this.codes = [];
     this.color = [];
+    this.items = [];
     this._weatherService.getWeather(weatherForm.value.city).subscribe(
       (data) => {
         this.serviceWeather(data)
       })
-      console.log(this.weather)
+    console.log(this.weather)
   }
 }

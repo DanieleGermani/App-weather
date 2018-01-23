@@ -56,36 +56,36 @@
     </div> -->
     <div class="forecast">
       <div class="row">
-        <div [ngStyle]="{'background-color': color[0]}" class="col-sm-2 days">
-          <h5>{{forecast[0].dt_txt | date: 'EEEE'}}</h5>
-          <i class="owf owf-{{forecast[0].weather[0].id}}-{{forecast[0].sys.pod}} owf-5x" style="color:white"></i>
-          <h3>{{forecast[0].main.temp | number: '1.0-0'}}º</h3>
+        <div *ngFor="let item of items" [ngStyle]="{'border-top': item[3]}" class="col-sm-2 days animated fadeIn">
+          <h5>{{item[0] | date: 'EEEE'}}</h5>
+          <i class="owf owf-{{item[1]}}-d owf-5x" style="color:white"></i>
+          <h3>{{item[2] | number: '1.0-0'}}º</h3>
         </div>
-        <div [ngStyle]="{'background-color': color[1]}" class="col-sm-2 days">
+        <!-- <div [ngStyle]="{'border-top': color[1]}" class="col-sm-2 days">
           <h5>{{forecast[7].dt_txt | date: 'EEEE'}}</h5>
           <i class="owf owf-{{forecast[7].weather[0].id}}-{{forecast[7].sys.pod}} owf-5x" style="color:white"></i>
           <h3>{{forecast[7].main.temp | number: '1.0-0'}}º</h3>
         </div>
-        <div [ngStyle]="{'background-color': color[2]}" class="col-sm-2 days">
+        <div [ngStyle]="{'border-top': color[2]}" class="col-sm-2 days">
           <h5>{{forecast[14].dt_txt | date: 'EEEE'}}</h5>
           <i class="owf owf-{{forecast[14].weather[0].id}}-{{forecast[14].sys.pod}} owf-5x" style="color:white"></i>
           <h3>{{forecast[14].main.temp | number: '1.0-0'}}º</h3>
         </div>
-        <div [ngStyle]="{'background-color': color[3]}" class="col-sm-2 days">
-          <h5>{{forecast[22].dt_txt | date: 'EEEE'}}</h5>
-          <i class="owf owf-{{forecast[22].weather[0].id}}-{{forecast[22].sys.pod}} owf-5x" style="color:white"></i>
-          <h3>{{forecast[22].main.temp | number: '1.0-0'}}º</h3>
+        <div [ngStyle]="{'border-top': color[3]}" class="col-sm-2 days">
+          <h5>{{forecast[21].dt_txt | date: 'EEEE'}}</h5>
+          <i class="owf owf-{{forecast[21].weather[0].id}}-{{forecast[21].sys.pod}} owf-5x" style="color:white"></i>
+          <h3>{{forecast[21].main.temp | number: '1.0-0'}}º</h3>
         </div>
-        <div [ngStyle]="{'background-color': color[4]}" class="col-sm-2 days">
-          <h5>{{forecast[30].dt_txt | date: 'EEEE'}}</h5>
-          <i class="owf owf-{{forecast[29].weather[0].id}}-{{forecast[29].sys.pod}} owf-5x" style="color:white"></i>
-          <h3>{{forecast[30].main.temp | number: '1.0-0'}}º</h3>
+        <div [ngStyle]="{'border-top': color[4]}" class="col-sm-2 days">
+          <h5>{{forecast[28].dt_txt | date: 'EEEE'}}</h5>
+          <i class="owf owf-{{forecast[28].weather[0].id}}-{{forecast[28].sys.pod}} owf-5x" style="color:white"></i>
+          <h3>{{forecast[28].main.temp | number: '1.0-0'}}º</h3>
         </div>
-        <div [ngStyle]="{'background-color': color[5]}" class="col-sm-2 days">
-          <h5>{{forecast[38].dt_txt | date: 'EEEE'}}</h5>
-          <i class="owf owf-{{forecast[38].weather[0].id}}-{{forecast[38].sys.pod}} owf-5x" style="color:white"></i>
-          <h3>{{forecast[38].main.temp | number: '1.0-0'}}º</h3>
-        </div>
+        <div [ngStyle]="{'border-top': color[5]}" class="col-sm-2 days">
+          <h5>{{forecast[35].dt_txt | date: 'EEEE'}}</h5>
+          <i class="owf owf-{{forecast[35].weather[0].id}}-{{forecast[35].sys.pod}} owf-5x" style="color:white"></i>
+          <h3>{{forecast[35].main.temp | number: '1.0-0'}}º</h3>
+        </div> -->
       </div>
 
     </div>
