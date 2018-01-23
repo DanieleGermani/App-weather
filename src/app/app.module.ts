@@ -8,7 +8,7 @@ import { WeatherComponent } from './components/weather/weather.component';
 
 //Services
 import {WeatherService} from './services/weather.service';
-import {CurrentWeatherService} from './services/current-weather.service';
+
 
 @NgModule({
   declarations: [
@@ -21,8 +21,7 @@ import {CurrentWeatherService} from './services/current-weather.service';
     FormsModule
 
   ],
-  providers: [WeatherService,
-              CurrentWeatherService
+  providers: [WeatherService
               ],
   bootstrap: [AppComponent]
 })

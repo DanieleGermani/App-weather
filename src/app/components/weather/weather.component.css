@@ -14,7 +14,7 @@ html, h1, h2,h3 {
 }
 
 .current-weather {
-  background-image: url('https://www.lifegate.it/app/uploads/francoforte-citta-sostenibili.jpg');
+  background-image: url('http://www.meteoweb.eu/wp-content/uploads/2016/05/Ponte-di-Brooklyn.jpg');
   background-repeat:no-repeat;
   background-size:100% 100%;
   background-position:center;
@@ -32,9 +32,7 @@ html, h1, h2,h3 {
 }
 
 .days {
-  box-sizing: border-box;
   padding: 20px;
-  background-color: rgba(255, 246, 0,0.4);
 }
 
 .search {
