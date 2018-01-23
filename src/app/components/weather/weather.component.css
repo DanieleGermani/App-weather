@@ -1,14 +1,14 @@
 .container {
   margin: auto;
-  width: 80%;
+  width: 70%;
   height: 60%;
   background-color: #211d44;
   color: white;
-  padding: 60px 15px 30px 15px;
+  padding: 60px 15px 0 15px;
   text-align: center;
 }
 
-html, h1, h2 {
+html, h1, h2,h3 {
   margin: 0;
   padding: 0;
 }
@@ -16,24 +16,41 @@ html, h1, h2 {
 .current-weather {
   background-image: url('https://www.lifegate.it/app/uploads/francoforte-citta-sostenibili.jpg');
   background-repeat:no-repeat;
-  background-size:100%;
+  background-size:100% 100%;
   background-position:center;
 
 }
-.current-weather>i{
-  color:white;
-  width: 400px;
+.left{
+  text-align: right;
+}
+.left>h3{
+  font-size: 150px;
+}
+.rigth{
+  color: green;
+  text-align: left;
 }
 
 .days {
-  background-color: blue;
   box-sizing: border-box;
+  padding: 20px;
+  background-color: rgba(
+ 233, 236, 61, 0.5);
 }
 
 .search {
-  background-color: yellow;
+  padding: 40px;
   text-align: center;
   width: 100%;
+  color: white;
+}
+input{
+    border: 1px solid white;
+    width: 35%;
+    background-color: transparent;
+    border-radius: 8px;
+    padding: 6px;
+    outline: none;
 }
 
 .row {
