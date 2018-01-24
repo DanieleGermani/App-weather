@@ -4,8 +4,8 @@ import { WeatherService } from '../../services/weather.service';
 
 @Component({
   selector: 'app-weather',
-  templateUrl: './weather.component.html',
-  styleUrls: ['./weather.component.css']
+  templateUrl: './weather.component.html'
+  
 })
 export class WeatherComponent implements OnInit {
   date: number = new Date().getTime();

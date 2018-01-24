@@ -21,59 +21,56 @@
 </div>
 
 <div *ngIf="loading === true" class="animated fadeIn">
-
   <div class="container animated fadeIn">
     <div class="weather-container">
-
-
-    <div class="row c-weather">
-      <div class="row">
-        <header class="col-sm-12">
-          <h1>{{weather.city.name}}</h1>
-          <p>{{date | date: 'EEEE, MMMM d, H:mm'}}</p>
-        </header>
-      </div>
-      <div class="row c-current-weather">
-        <div class="col-sm-5 col-md-5  c-left-current-weather">
-          <div class="c-degrees">
-            <span>{{weather.list[0].main.temp | number : '1.0-0'}}
+      <div class="row c-weather">
+        <div class="row">
+          <header class="col-sm-12">
+            <h1>{{weather.city.name}}</h1>
+            <p>{{date | date: 'EEEE, MMMM d, H:mm'}}</p>
+          </header>
+        </div>
+        <div class="row c-current-weather">
+          <div class="col-sm-5 col-md-5  c-left-current-weather">
+            <div class="c-degrees">
+              <span>{{weather.list[0].main.temp | number : '1.0-0'}}
             <i class="wi wi-degrees"></i>
           </span>
+            </div>
+
           </div>
+          <div *ngIf="items.length > 0" class="col-sm-2 col-md-2 c-center-weather">
+            <i class="wi wi-owm-{{items[0][5]}}-{{weather.list[0].weather[0].id}}" style="font-size:120px;"></i>
+          </div>
+          <div class="col-sm-5 col-md-5  c-right-current-weather">
+            <p><i class="wi wi-thermometer"></i> {{weather.list[0].main.pressure | number: '1.0-0'}} mm Hg</p>
+            <p><i class="wi wi-humidity"></i> {{weather.list[0].main.humidity | number: '1.0-0'}}% humidity</p>
+            <p><i class="wi wi-strong-wind"></i> {{weather.list[0].wind.speed | number: '1.0-0'}}m/s NV</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12 c-description">
+            <p>{{weather.list[0].weather[0].description}}</p>
+          </div>
+        </div>
+      </div>
 
-        </div>
-        <div class="col-sm-2 col-md-2 c-center-weather">
-          <i class="wi wi-owm-{{items[0][5]}}-{{weather.list[0].weather[0].id}}" style="font-size:120px;"></i>
-        </div>
-        <div class="col-sm-5 col-md-5  c-right-current-weather">
-          <p><i class="wi wi-thermometer"></i>  {{weather.list[0].main.pressure | number: '1.0-0'}} mm Hg</p>
-          <p><i class="wi wi-humidity"></i>  {{weather.list[0].main.humidity | number: '1.0-0'}}% humidity</p>
-          <p><i class="wi wi-strong-wind"></i>  {{weather.list[0].wind.speed | number: '1.0-0'}}m/s NV</p>
+      <div class="forecast">
+        <div class="row">
+          <div *ngFor="let item of items" [ngStyle]="{'border-top': item[4], 'background-color': item[3]}" class="col-sm-2 days animated fadeInDown">
+            <p>{{item[0] | date: 'EEEE'}}</p>
+            <i class="wi wi-owm-{{item[5]}}-{{item[1]}}" style="font-size:30px; padding-top:10px;"></i>
+            <p>{{item[2] | number: '1.0-0'}}<i class="wi wi-degrees" style="font-size: 25px;"></i></p>
+          </div>
         </div>
       </div>
       <div class="row">
-        <div class="col-sm-12 c-description">
-          <p>{{weather.list[0].weather[0].description}}</p>
+        <div class="col-sm-12 search">
+          <form (ngSubmit)="onSubmit(form)" #form="ngForm">
+            <input type="text" ngModel name="city" placeholder="search city..." autocomplete="country">
+          </form>
         </div>
       </div>
     </div>
-
-    <div class="forecast">
-      <div class="row">
-        <div *ngFor="let item of items" [ngStyle]="{'border-top': item[4], 'background-color': item[3]}" class="col-sm-2 days animated fadeInDown">
-          <p>{{item[0] | date: 'EEEE'}}</p>
-          <i class="wi wi-owm-{{item[5]}}-{{item[1]}}" style="font-size:30px; padding-top:10px;"></i>
-          <p>{{item[2] | number: '1.0-0'}}<i class="wi wi-degrees"style="font-size: 25px;"></i></p>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-12 search">
-        <form (ngSubmit)="onSubmit(form)" #form="ngForm">
-          <input type="text" ngModel name="city" placeholder="search city..." autocomplete="country">
-        </form>
-      </div>
-    </div>
-  </div>
   </div>
 </div>
