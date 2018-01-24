@@ -16,7 +16,6 @@ export class WeatherService {
       res.json()
     );
   }
-
   localWeather(lat:string,lon:string){
   return  this.http.get(`${this.url}?lat=${lat}&lon=${lon}&units=metric&appid=${this.apiKey}`).map( res => res.json());
 }

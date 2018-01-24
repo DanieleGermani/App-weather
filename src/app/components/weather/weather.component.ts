@@ -73,7 +73,7 @@ por eso cada ved el loop encuentra una 'n' igualo mi variabile dayOrNigth a 'nig
       /*hago un push a item[Array] por crear una array y guarda juntos todos los elementos */
       item.push(date, code, temp, color,border,dayOrNigth)
       /* Una vez que cada elemento esta ordenado en su array  y en su posicion, hago otro push en items
-      asi tengo todas las array en una , y la puedo utillizar en el html con un ngFor 
+      asi tengo todas las array en una , y la puedo utillizar en el html con un ngFor
        */
       this.items.push(item)
     }
@@ -100,7 +100,9 @@ por eso cada ved el loop encuentra una 'n' igualo mi variabile dayOrNigth a 'nig
   }
 
   onSubmit(weatherForm: NgForm) {
+    /*Limpo items array cada vez antes de una nueva busqueda*/
     this.items = [];
+    
     this._weatherService.getWeather(weatherForm.value.city).subscribe(
       (data) => {
         /*Por no repitir codigo he creado esta funcion (serviceWeather) explico su funcionalitad mas arriba */
