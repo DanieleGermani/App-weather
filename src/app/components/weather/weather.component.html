@@ -19,9 +19,10 @@
   </div>
   <p>Wait Please...</p>
 </div>
+
 <div *ngIf="loading === true" class="container animated fadeIn">
-  <div class="info animated fadeIn">
-    <div class="row current-weather ">
+  <div class="c-weather animated fadeIn">
+    <div class="row c-current-weather ">
       <div class="row">
         <div class="col-sm-12">
           <h1>{{weather.city.name}}</h1>
@@ -29,17 +30,23 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-sm-4 left">
-          <h3>{{weather.list[0].main.temp | number : '1.0-0'}}</h3>
-          <p>+20 feels</p>
+        <div class="col-sm-4 col-md-4  c-left-current-weather">
+          <div class="c-degrees">
+            <h3>{{weather.list[0].main.temp | number : '1.0-0'}}
+              <span><i class="wi wi-degrees"></i></span>
+            </h3>
+            <p>+20 feels</p>
+
+          </div>
+
         </div>
-        <div class="col-sm-4">
-          <i class="owf owf-{{weather.list[0].weather[0].id}}-{{weather.list[0].sys.pod}}" style="color:white; font-size:150px;"></i>
+        <div class="col-sm-4 col-md-4 ">
+          <i class="wi wi-owm-{{weather.list[0].weather[0].id}}" style="font-size:150px;"></i>
         </div>
-        <div class="col-sm-4 rigth">
-          <p>{{weather.list[0].main.pressure}} mm Hg</p>
-          <p>{{weather.list[0].main.humidity}}% humidity</p>
-          <p>{{weather.list[0].wind.speed}}m/s NV</p>
+        <div class="col-sm-4 col-md-4  c-right-current-weather">
+          <p><i class="wi wi-thermometer"></i>  {{weather.list[0].main.pressure | number: '1.0-0'}} mm Hg</p>
+          <p><i class="wi wi-humidity"></i>  {{weather.list[0].main.humidity | number: '1.0-0'}}% humidity</p>
+          <p><i class="wi wi-strong-wind"></i>  {{weather.list[0].wind.speed | number: '1.0-0'}}m/s NV</p>
         </div>
       </div>
       <div class="row">
@@ -52,8 +59,8 @@
       <div class="row">
         <div *ngFor="let item of items" [ngStyle]="{'border-top': item[4], 'background-color': item[3]}" class="col-sm-2 days animated fadeInDown">
           <h5>{{item[0] | date: 'EEEE'}}</h5>
-          <i class="owf owf-{{item[1]}}-d owf-5x" style="color:white"></i>
-          <h3>{{item[2] | number: '1.0-0'}}º</h3>
+          <i class="wi wi-owm-{{item[5]}}-{{item[1]}}" style="font-size:30px; padding:10px;  background-color: rgba(178, 186, 187, 0.2); border-radius: 50%;"></i>
+          <h3>{{item[2] | number: '1.0-0'}}<i class="wi wi-degrees"></i></h3>
         </div>
       </div>
     </div>

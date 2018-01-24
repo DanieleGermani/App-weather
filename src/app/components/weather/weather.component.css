@@ -1,38 +1,46 @@
-.container {
+.c-weather {
   margin: auto;
-  width: 70%;
-  height: 60%;
-  background-color: #211d44;
+  width: 80%;
+  height: 100%;
+  background-image: url('/assets/img/background 1.jpg');
+  background-repeat:no-repeat;
+  background-size:100% 100%;
   color: white;
-  padding: 60px 15px 0 15px;
+  padding: 68px 16px 40px 16px;
   text-align: center;
 }
 
-html, h1, h2,h3 {
+
+html, h1, h2, h3,h4,h5,h6, p{
   margin: 0;
   padding: 0;
 }
 
-.current-weather {
-  background-image: url('http://www.meteoweb.eu/wp-content/uploads/2016/05/Ponte-di-Brooklyn.jpg');
+.c-current-weather {
+  background-image: url('/assets/img/background 3.jpg');
   background-repeat:no-repeat;
   background-size:100% 100%;
-  background-position:center;
-
 }
-.left{
+.c-left-current-weather{
   text-align: right;
 }
-.left>h3{
-  font-size: 150px;
+.c-degrees>h3{
+  font-size: 170px;
+  letter-spacing: -26px;
+  font-weight: 100;
+  text-align: right;
 }
-.rigth{
-  color: green;
+.c-right-current-weather{
   text-align: left;
+  padding: 40px 0;
+  font-size: 22px;
 }
+
+
 
 .days {
   padding: 20px;
+  border-right: 1px solid transparent;
 }
 
 .search {
@@ -49,7 +57,9 @@ input{
     padding: 6px;
     outline: none;
 }
+::placeholder { color: white; }
 
-.row {
+.col-sm-4,.row {
   margin: 0;
+  padding: 0;
 }
