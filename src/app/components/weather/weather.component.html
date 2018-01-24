@@ -1,4 +1,4 @@
-<div *ngIf="loading === false" align="center" class=" animated fadeIn">
+<div *ngIf="loading === false" align="center" class="loading animated fadeIn">
   <h2>Loading...</h2>
   <div class="loader loader--style1" title="0" align="center">
     <svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="40px" height="40px" viewBox="0 0 40 40" enable-background="new 0 0 40 40" xml:space="preserve">
@@ -20,47 +20,50 @@
   <p>Wait Please...</p>
 </div>
 
-<div *ngIf="loading === true" class="container animated fadeIn">
-  <div class="c-weather animated fadeIn">
-    <div class="row c-current-weather ">
+<div *ngIf="loading === true" class="animated fadeIn">
+
+  <div class="container animated fadeIn">
+    <div class="weather-container">
+
+
+    <div class="row c-weather">
       <div class="row">
-        <div class="col-sm-12">
+        <header class="col-sm-12">
           <h1>{{weather.city.name}}</h1>
           <p>{{date | date: 'EEEE, MMMM d, H:mm'}}</p>
-        </div>
+        </header>
       </div>
-      <div class="row">
-        <div class="col-sm-4 col-md-4  c-left-current-weather">
+      <div class="row c-current-weather">
+        <div class="col-sm-5 col-md-5  c-left-current-weather">
           <div class="c-degrees">
-            <h3>{{weather.list[0].main.temp | number : '1.0-0'}}
-              <span><i class="wi wi-degrees"></i></span>
-            </h3>
-            <p>+20 feels</p>
-
+            <span>{{weather.list[0].main.temp | number : '1.0-0'}}
+            <i class="wi wi-degrees"></i>
+          </span>
           </div>
 
         </div>
-        <div class="col-sm-4 col-md-4 ">
-          <i class="wi wi-owm-{{weather.list[0].weather[0].id}}" style="font-size:150px;"></i>
+        <div class="col-sm-2 col-md-2 c-center-weather">
+          <i class="wi wi-owm-{{items[0][5]}}-{{weather.list[0].weather[0].id}}" style="font-size:120px;"></i>
         </div>
-        <div class="col-sm-4 col-md-4  c-right-current-weather">
+        <div class="col-sm-5 col-md-5  c-right-current-weather">
           <p><i class="wi wi-thermometer"></i>  {{weather.list[0].main.pressure | number: '1.0-0'}} mm Hg</p>
           <p><i class="wi wi-humidity"></i>  {{weather.list[0].main.humidity | number: '1.0-0'}}% humidity</p>
           <p><i class="wi wi-strong-wind"></i>  {{weather.list[0].wind.speed | number: '1.0-0'}}m/s NV</p>
         </div>
       </div>
       <div class="row">
-        <div class="col-sm-12">
-          <h1>{{weather.list[0].weather[0].description}}</h1>
+        <div class="col-sm-12 c-description">
+          <p>{{weather.list[0].weather[0].description}}</p>
         </div>
       </div>
     </div>
+
     <div class="forecast">
       <div class="row">
         <div *ngFor="let item of items" [ngStyle]="{'border-top': item[4], 'background-color': item[3]}" class="col-sm-2 days animated fadeInDown">
-          <h5>{{item[0] | date: 'EEEE'}}</h5>
-          <i class="wi wi-owm-{{item[5]}}-{{item[1]}}" style="font-size:30px; padding:10px;  background-color: rgba(178, 186, 187, 0.2); border-radius: 50%;"></i>
-          <h3>{{item[2] | number: '1.0-0'}}<i class="wi wi-degrees"></i></h3>
+          <p>{{item[0] | date: 'EEEE'}}</p>
+          <i class="wi wi-owm-{{item[5]}}-{{item[1]}}" style="font-size:30px; padding-top:10px;"></i>
+          <p>{{item[2] | number: '1.0-0'}}<i class="wi wi-degrees"style="font-size: 25px;"></i></p>
         </div>
       </div>
     </div>
@@ -71,5 +74,6 @@
         </form>
       </div>
     </div>
+  </div>
   </div>
 </div>
